@@ -336,6 +336,7 @@ h1,h2,h3,h4{
   overflow:hidden;
   transition:box-shadow .2s ease, transform .2s ease;
   display:flex; flex-direction:column;
+  cursor:pointer;
 }
 .product-card:hover{ box-shadow:var(--shadow); transform:translateY(-4px); }
 .product-media{
@@ -717,6 +718,57 @@ h1,h2,h3,h4{
 .order-item-row{ display:flex; justify-content:space-between; font-size:13px; padding:8px 0; border-bottom:1px dashed var(--line); gap:10px; flex-wrap:wrap; }
 .order-item-row .name{ color:var(--ink); min-width:0; word-break:break-word; }
 .order-item-row .qty{ color:var(--ink-soft); }
+
+/* =========================== PRODUCT DETAIL PAGE =========================== */
+.product-detail-layout{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; }
+.product-detail-layout > *{ min-width:0; }
+.pd-gallery{
+  position:relative; aspect-ratio:1/1; border-radius:var(--radius);
+  background:linear-gradient(160deg,#F8F4E8,#EFE4C4);
+  border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+}
+.pd-gallery svg{ width:52%; height:52%; stroke:var(--navy); }
+.pd-gallery .product-badge{ top:16px; left:16px; }
+.pd-cat{ font-size:12px; text-transform:uppercase; letter-spacing:1.6px; color:var(--gold-dark); font-family:var(--font-display); font-weight:700; display:flex; align-items:center; gap:8px; }
+.pd-cat::before{ content:""; width:18px; height:2px; background:var(--orange); display:inline-block; }
+.pd-title{ font-size:30px; line-height:1.2; margin-top:10px; }
+.pd-sku{ font-size:12.5px; color:var(--ink-soft); margin-top:14px; }
+.pd-sku strong{ color:var(--ink); font-family:var(--font-display); }
+.pd-price-row{ display:flex; align-items:baseline; gap:14px; margin-top:18px; flex-wrap:wrap; }
+.pd-price{ font-family:var(--font-display); font-weight:700; font-size:32px; color:var(--black); }
+.pd-old-price{ font-size:17px; color:#A79E86; text-decoration:line-through; font-weight:600; }
+.pd-discount{ background:var(--orange); color:#fff; font-size:11.5px; font-weight:700; padding:5px 12px; border-radius:999px; text-transform:uppercase; font-family:var(--font-display); letter-spacing:.4px; }
+.pd-desc{
+  margin-top:22px; background:var(--cream); border-left:3px solid var(--gold);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:16px 20px; font-size:14px;
+  color:var(--ink-soft); line-height:1.7;
+}
+.pd-avail{ margin-top:26px; padding-top:22px; border-top:1px solid var(--line); }
+.pd-avail-head{ display:flex; justify-content:space-between; align-items:center; font-size:12.5px; gap:10px; flex-wrap:wrap; }
+.pd-avail-head span:first-child{ font-family:var(--font-display); font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--ink); }
+.pd-stock-pill{ background:#FBE9C6; color:#8A5A0E; font-weight:700; font-size:11.5px; padding:4px 12px; border-radius:999px; font-family:var(--font-display); letter-spacing:.3px; white-space:nowrap; }
+.pd-stock-pill.low{ background:#FBE0DD; color:#B23A3A; }
+.pd-stock-bar{ height:6px; border-radius:999px; background:var(--line); margin-top:10px; overflow:hidden; }
+.pd-stock-bar-fill{ height:100%; background:linear-gradient(90deg,var(--gold),var(--orange)); border-radius:999px; }
+.pd-stock-note{ font-size:12.5px; color:var(--ink-soft); margin-top:8px; }
+.pd-actions{ display:flex; align-items:center; gap:14px; margin-top:26px; flex-wrap:wrap; }
+.pd-actions .qty-stepper{ flex:none; }
+.pd-actions .btn{ flex:1; min-width:140px; }
+.pd-added-msg{
+  display:none; margin-top:16px; gap:12px; align-items:center; background:#F1F8F0;
+  border:1px solid #BFE3C0; border-radius:var(--radius-sm); padding:14px 16px; font-size:13px; color:#2B6B36;
+}
+@media (max-width:1080px){
+  .product-detail-layout{ grid-template-columns:1fr; gap:32px; }
+  .pd-gallery{ max-width:440px; margin:0 auto; }
+}
+@media (max-width:560px){
+  .pd-title{ font-size:22px; }
+  .pd-price{ font-size:26px; }
+  .pd-actions{ flex-direction:column; align-items:stretch; }
+  .pd-actions .qty-stepper{ align-self:center; }
+}
 
 /* =========================== EMPTY STATE =========================== */
 .empty-state{ text-align:center; padding:80px 20px; }
