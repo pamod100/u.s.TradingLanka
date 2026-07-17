@@ -704,8 +704,8 @@ h1,h2,h3,h4{
   padding:20px; text-align:center; color:var(--ink-soft); font-size:13px;
 }
 .upload-slip input{ margin-top:10px; max-width:100%; }
-.order-item-row{ display:flex; justify-content:space-between; font-size:13px; padding:8px 0; border-bottom:1px dashed var(--line); gap:10px; }
-.order-item-row .name{ color:var(--ink); }
+.order-item-row{ display:flex; justify-content:space-between; font-size:13px; padding:8px 0; border-bottom:1px dashed var(--line); gap:10px; flex-wrap:wrap; }
+.order-item-row .name{ color:var(--ink); min-width:0; word-break:break-word; }
 .order-item-row .qty{ color:var(--ink-soft); }
 
 /* =========================== EMPTY STATE =========================== */
@@ -754,6 +754,9 @@ h1,h2,h3,h4{
   .timeline{ grid-template-columns:repeat(2,1fr); }
   .cart-layout, .checkout-layout, .contact-grid{ grid-template-columns:1fr; }
   .stat-grid.cols-4{ grid-template-columns:1fr 1fr; }
+  /* Overrides the inline position:sticky on .summary-box (checkout/cart pages)
+     so it doesn't float oddly once the layout stacks to a single column */
+  .summary-box{ position:static !important; top:auto !important; margin-top:24px; }
 }
 
 @media (max-width:860px){
