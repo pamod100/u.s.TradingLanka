@@ -189,10 +189,15 @@
   const lowStock = product.stock <= 5;
   const stockLabel = lowStock ? `Only ${product.stock} left` : 'In Stock';
 
+  // Use the product photo if one is set; otherwise fall back to the category icon.
+  const imageHtml = product.image
+    ? `<img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`
+    : (PRODUCT_ICONS[product.icon] || '');
+
   document.getElementById('pd-root').innerHTML = `
     <div class="pd-gallery">
       ${badgeHtml}
-      ${PRODUCT_ICONS[product.icon] || ''}
+      ${imageHtml}
     </div>
     <div>
       <span class="pd-cat">${product.category}</span>
